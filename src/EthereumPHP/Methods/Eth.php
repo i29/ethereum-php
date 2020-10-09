@@ -202,8 +202,8 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_sendRawTransaction', [$data])
         );
-
-        return $response->getRpcResult();
+        
+        return new TransactionHash($response->getRpcResult());
 
     }
 
