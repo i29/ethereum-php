@@ -33,7 +33,8 @@ class TransactionInfo
         $this->input = $response['input'];
         $this->nonce = hexdec($response['nonce']);
         $this->transactionIndex = hexdec($response['transactionIndex']);
-        $this->value = new Wei(hexdec($response['value']));
+        $value = gmp_strval(gmp_init($response['value']), 10);
+        $this->value = new Wei($value);
         $this->v = $response['v'];
         $this->r = $response['r'];
         $this->s = $response['s'];
